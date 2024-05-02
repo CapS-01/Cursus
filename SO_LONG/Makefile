@@ -13,18 +13,21 @@ CFLAGS  = -Wall -Werror -Wextra
 
 ifeq ($(shell uname), Linux)
 	INCLUDES = -I/usr/include -Imlx
+	MLX_FLAGS = -I/usr/include -lXext -lX11 -Imlx_linux -O3
+#-lmlx 
 else
 	INCLUDES = -I/opt/X11/include -Imlx
+	MLX_FLAGS = -Lmlx -lmlx -L/usr/X11/lib -lXext -lX11 -framework OpenGL -framework AppKit
 endif
 
 MLX_DIR = ./minilibx_linux
-MLX_LIB = $(MLX_DIR)/libmlx_$(UNAME).a
+MLX_LIB = $(MLX_DIR)/libmlx_Linux.a
 
-ifeq ($(shell uname), Linux)
-	MLX_FLAGS = -I/usr/include -lmlx -lXext -lX11 -Imlx_linux -O3
-else
-	MLX_FLAGS = -Lmlx -lmlx -L/usr/X11/lib -lXext -lX11 -framework OpenGL -framework AppKit
-endif
+#ifeq ($(shell uname), Linux)
+#	MLX_FLAGS = -I/usr/include -lmlx -lXext -lX11 -Imlx_linux -O3
+#else
+#	MLX_FLAGS = -Lmlx -lmlx -L/usr/X11/lib -lXext -lX11 -framework OpenGL -framework AppKit
+#endif
 
 all: $(OBJ_PATH) $(NAME)
 
@@ -36,7 +39,7 @@ $(OBJ_PATH):
 	mkdir $(OBJ_PATH)
 #Q? Ici pour les liens des Dossiers Exts ? 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(MLX_FLAGS) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(MLX_LIB) $(MLX_FLAGS) -o $(NAME)
 
 clean:
 	rm -rf $(OBJ_PATH)

@@ -63,7 +63,6 @@ int on_keypress(int keysym, t_data *data)
 int	key_hook(int keycode, t_data *data)
 {
 	(void)data;
-//	(void)keycode;
 	printf("%d\n", keycode);
 /*
 	if (keycode == 45)
