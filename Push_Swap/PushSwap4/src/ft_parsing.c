@@ -23,10 +23,13 @@ t_stack	*ft_sub_process(char **argv)
 	a = NULL;
 	i = 0;
 	j = 0;
-	tmp = ft_split(argv[1], ' ');
-	if (is_correct_input(tmp) != 0)
-		printf("catch\n");
-			//exit_error(NULL, NULL);
+	if (is_correct_input(argv) != 0)
+	{	write(1, "Error\n", 6);
+		// ft_freestr(argv);
+		// ft_freestr(argv);
+		exit(1);
+	}// 	ft_freestr(tmp);
+		tmp = ft_split(argv[1], ' ');
 	while (tmp[i])
 	{
 		j = ft_atoi(tmp[i]);
