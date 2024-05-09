@@ -6,7 +6,7 @@
 /*   By: anfemeni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 17:05:21 by anfemeni          #+#    #+#             */
-/*   Updated: 2024/04/04 17:05:31 by anfemeni         ###   ########.fr       */
+/*   Updated: 2024/05/09 14:00:36 by anfemeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_stack	*fill_stack_values(int ac, char **av)
 	while (i < ac)
 	{
 		nb = ft_atoi(av[i]);
-		if ( errno == 1 || nb > INT_MAX || nb < INT_MIN)
+		if (errno == 1 || nb > INT_MAX || nb < INT_MIN)
 			exit_error(&stack_a, NULL);
 		if (i == 1)
 			stack_a = stack_new((int)nb);

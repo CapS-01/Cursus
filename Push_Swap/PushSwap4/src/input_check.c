@@ -19,7 +19,7 @@ static int	arg_is_number(char *av)
 	i = 0;
 	if (is_sign(av[i]) && av[i + 1] != '\0')
 		i++;
-	while (av[i] && is_digit(av[i]))
+	while ((av[i] && is_digit(av[i])) || av[i] == ' ')
 		i++;
 	if (av[i] != '\0' && !is_digit(av[i]))
 		return (1);
@@ -70,13 +70,16 @@ int	is_correct_input(char **av)
 	while (av[i])
 	{
 		if (arg_is_number(av[i]) != 0)
+		{
+			printf("%d\n", arg_is_number(av[i]));
 			return (1);
+		}
 		nb_zeros += arg_is_zero(av[i]);
 		i++;
 	}
 	if (nb_zeros > 1)
-		return (1);
-	if (have_duplicates(av) != 0)
 		return (2);
+	if (have_duplicates(av) != 0)
+		return (3);
 	return (0);
 }

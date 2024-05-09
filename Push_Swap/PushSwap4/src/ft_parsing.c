@@ -6,7 +6,7 @@
 /*   By: anfemeni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 14:54:37 by anfemeni          #+#    #+#             */
-/*   Updated: 2024/05/06 15:38:34 by anfemeni         ###   ########.fr       */
+/*   Updated: 2024/05/09 14:04:37 by anfemeni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,16 @@ t_stack	*ft_sub_process(char **argv)
 	a = NULL;
 	i = 0;
 	j = 0;
+	printf("%d\n", is_correct_input(argv));
 	if (is_correct_input(argv) != 0)
-	{	write(1, "Error\n", 6);
-		// ft_freestr(argv);
-		// ft_freestr(argv);
-		exit(1);
-	}// 	ft_freestr(tmp);
-		tmp = ft_split(argv[1], ' ');
+		exit_error(NULL, NULL);
+	tmp = ft_split(argv[1], ' ');
 	while (tmp[i])
 	{
 		j = ft_atoi(tmp[i]);
 		if (errno == 1)
 		{
 			ft_freestr(tmp);
-			free(tmp);
 			exit_error(&a, NULL);
 			errno = 0;
 		}
@@ -44,7 +40,6 @@ t_stack	*ft_sub_process(char **argv)
 		i++;
 	}
 	ft_freestr(tmp);
-	free(tmp);
 	return (a);
 }
 

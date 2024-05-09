@@ -1,5 +1,5 @@
 #Antonin_fe
-CC	= gcc
+CC	= cc
 CFLAGS	= -Wall -Wextra -Werror -g3
 #valgrind --leak-check=full --show-leak-kinds=all
 NAME	= push_swap

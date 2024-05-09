@@ -41,6 +41,7 @@ int	main(int ac, char **av)
 
 	if (ac < 2)
 		return (0);
+	stack_a = NULL;
 	stack_b = NULL;
 	if (ac == 2)
 		stack_a = ft_sub_process(av);
