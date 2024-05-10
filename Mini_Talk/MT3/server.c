@@ -44,7 +44,7 @@ int	main(void)
 	struct sigaction	sa;
 
 	sa.sa_sigaction = &handle_signal;
-	sa.sa_flags = SA_SIGINFO;
+	sa.sa_flags = SA_SIGINFO; //SA_RESTART; à la place de siginfos
 	sigemptyset(&sa.sa_mask);
 	printf("%d\n", getpid());
 	sigaction(SIGUSR1, &sa, NULL);
